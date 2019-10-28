@@ -1,0 +1,43 @@
+jdbc:
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://127.0.0.1:3306/qingcheng_goods?characterEncoding=UTF8
+  username: root
+  password: root
+
+spring:
+  profiles:
+    active: a,b
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot_test
+    username: root
+    password: root
+  redis:
+    host: localhost
+    port: 6379
+  data:
+    elasticsearch:
+      cluster-name: my-application
+      cluster-nodes: 127.0.0.1:9300
+  thymeleaf:
+    #模板模式
+    mode: HTML
+    #编码，可不配置
+    encoding: UTF-8
+    #避免修改模板后要重启服务器
+    cache: false
+    #内容类别，可不配置
+    servlet:
+      content-type: text/html
+    #模板路径，可不配置
+    prefix: classpath:/templates
+
+server:
+  port: 80
+  servlet:
+    context-path: /boot
+
+logging:
+  level:
+    cn.itcast: debug
+    org.springframework: info
