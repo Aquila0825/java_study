@@ -1,9 +1,11 @@
 package cn.itcast.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.format.annotation.DateTimeFormat;
 import tk.mybatis.mapper.annotation.KeySql;
 
 import javax.persistence.Id;
@@ -34,16 +36,19 @@ public class User implements Serializable {
 
     private Integer sex;
 
-    @Field(type = FieldType.Date)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date birthday;
 
     @Field(type = FieldType.Text, analyzer = "ik_max_word")
     private String note;
 
-    @Field(type = FieldType.Date)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date created;
 
-    @Field(type = FieldType.Date)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updated;
 
 }
